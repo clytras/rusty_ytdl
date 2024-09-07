@@ -252,6 +252,8 @@ pub struct RequestOptions {
 
 #[derive(thiserror::Error, Debug)]
 pub enum VideoError {
+    #[error("HTTPRequestError:{0}")]
+    HTTPRequestError(String),
     /// The video not found
     #[error("The video not found")]
     VideoNotFound,

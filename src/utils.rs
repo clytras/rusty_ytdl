@@ -1196,6 +1196,11 @@ pub async fn get_html(
     .await
     .map_err(VideoError::ReqwestMiddleware)?;
 
+    // TODO: Custom addition to make the promise exception have a status code when failing
+    // if request.status().as_u16() >= 400 || request.status().as_u16() < 200 {
+    //     return Err(VideoError::HTTPRequestError(request.status().to_string()));
+    // }
+
     let response_first = request
         .text()
         .await

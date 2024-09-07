@@ -188,7 +188,7 @@ impl<'opts> Video<'opts> {
         }
 
         // POToken experiment detected fallback to ios client (Webpage contains broken formats)
-        if check_experiments(&response) && !is_live(&player_response) {
+        // if check_experiments(&response) && !is_live(&player_response) {
             let ios_ytconfig = self
                 .get_player_ytconfig(
                     &response,
@@ -200,7 +200,7 @@ impl<'opts> Video<'opts> {
                 serde_json::from_str::<PlayerResponse>(&ios_ytconfig).unwrap_or_default();
 
             player_response.streaming_data = player_response_new.streaming_data;
-        }
+        // }
 
         if is_age_restricted {
             let embed_ytconfig = self
